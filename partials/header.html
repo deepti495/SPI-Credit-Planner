@@ -1,0 +1,32 @@
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-XXXXXXXXX-X', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- End Google Analytics -->
+
+<style media="screen">
+  {{{contentData.[css/main.css]}}}
+</style>
+
+<noscript>
+	<style media="screen">
+	  {{{contentData.[css/noscript.css]}}}
+	</style>
+</noscript>
+
+{{#each settings.seo_meta_tags }}
+   {{{ tag-generator this }}}
+{{/each}}
+<meta name="twitter:card" content="summary_large_image">
+{{#each settings.favicon_meta_tags }}
+   {{{ tag-generator this }}}
+{{/each}}
+
+<!--[if lt IE 9]><script src="/js/html5shiv.min.js"></script><![endif]-->
