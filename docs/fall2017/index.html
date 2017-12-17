@@ -34,14 +34,18 @@
     	<section id="setup">
 
     		<div class="setup__progress">Question <span class="setup__progress__step">1</span> of 
+    			4
     			
-    			3
     		</div>
 
     		<div class="setup__questions">
 		    	<div class="setup__question setup__question--active">
 		    		<p>I plan to graduate in <br> 
 		  				<select class="select-graduation">
+	<option data-extended="1.5 years" data-label="January 2019" value="January 2019">January 2019 - 1.5 years</option>
+	<option data-extended="2 years (On Time)" data-label="May 2019" value="May 2019" selected>May 2019 - 2 years (On Time)</option>
+	<option data-extended="2.5 years" data-label="January 2020" value="January 2020">January 2020 - 2.5 years</option>
+	<option data-extended="3 years" data-label="May 2020" value="May 2020">May 2020 - 3 years</option>
 </select>
 							<span class="question__period">.</span>
 						</p>
@@ -50,10 +54,22 @@
 		    	<div class="setup__question setup__question--inactive">
 						<p>I need
 						<select id="select--required-credits">
+								<option value="60" selected>60</option>
+								<option value="61" >61</option>
+								<option value="62" >62</option>
+								<option value="63" >63</option>
+								<option value="64" >64</option>
+								<option value="65" >65</option>
+								<option value="66" >66</option>
+								<option value="67" >67</option>
+								<option value="60" >I&#x27;ll look it up</option>
 						</select>
 						credits <br> to grauduate<span class="question__period">.</span></p>
 					</div>
 
+		    	<div class="setup__question setup__question--inactive">
+						<p>I have <select id="select--existing-credits"><option value='0'>0</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option><option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option><option value='13'>13</option><option value='14'>14</option><option value='15' selected>15</option><option value='16'>16</option><option value='17'>17</option><option value='18'>18</option><option value='19'>19</option><option value='20'>20</option></select> <br> credits right now<span class="question__period">.</span></p>
+					</div>
 
 					<div class="setup__question setup__question--inactive">
 						<p>I
@@ -73,10 +89,10 @@
     	</section>
 
     	<section id="intro">
-    		<h3></h3>
+    		<h3>How many credits you take each semester will determine when you graduate.</h3>
     		<ul>
-    			<li class="note--recommended-credits"></li>
-    			<li class="note--full-time-status"></li>
+    			<li class="note--recommended-credits">CUNY recommends taking 30 credits in your first year.</li>
+    			<li class="note--full-time-status">Note: Taking fewer than 12 credits in your Fall and Spring semesters may affect your financial aid eligibility.</li>
     		</ul>
     	</section>
 
@@ -88,20 +104,20 @@
     		<div class="status__ontrack">
     			<p>
     				If you take a course load like this every year,
-    				you'll achieve your goal of graduating in <span class="status__graduation-date"> </span>.
+    				you'll achieve your goal of graduating in <span class="status__graduation-date">May 2019</span>.
     				<br>
     				👍 😁 <button class="big-button button--save-plan">Save Your Plan</button>
     			</p>
     		</div>
     		<div class="status__offtrack">
     			 <p>
-    				If you take a course load like this every year, you'll be <span class="status__deficit"></span> short of achieving your goal of graduating in <span class="status__graduation-date"> </span> 👎 😟
+    				If you take a course load like this every year, you'll be <span class="status__deficit"></span> short of achieving your goal of graduating in <span class="status__graduation-date">May 2019</span> 👎 😟
     			</p>
     		</div>
     	</section>
 
     	<section id="plan">
-    		
+    		<div class='plan__year' id='plan__year--2018'><h4>Planned Year One 2018 &mdash; <span class='plan__year__total--2018'>30 credits</span></h4><div class="plan__semester" id="Fall-2018"><h5>Fall</h5><div class="plan__semester__total">0 Credits</div></div><div class="plan__semester" id="Winter-2018"><h5>Winter</h5><div class="plan__semester__total">0 Credits</div></div><div class="plan__semester" id="Spring-2018"><h5>Spring</h5><div class="plan__semester__total">0 Credits</div></div><div class="plan__semester" id="Summer-2018"><h5>Summer</h5><div class="plan__semester__total">0 Credits</div></div><div class="plan__planned-graduation">Planned<br>Graduation</div></div><div class='plan__year' id='plan__year--2019'><h4>Potential Year Two 2019 &mdash; <span class='plan__year__total--2019'>30 credits</span></h4><div class="plan__semester" id="Fall-2019"><h5>Fall</h5><div class="plan__semester__total">0 Credits</div></div><div class="plan__semester" id="Winter-2019"><h5>Winter</h5><div class="plan__semester__total">0 Credits</div></div><div class="plan__semester" id="Spring-2019"><h5>Spring</h5><div class="plan__semester__total">0 Credits</div></div><div class="plan__semester" id="Summer-2019"><h5>Summer</h5><div class="plan__semester__total">0 Credits</div></div><div class="plan__planned-graduation">Planned<br>Graduation</div></div><div class='plan__year' id='plan__year--2020'><h4>Potential Year Three 2020 &mdash; <span class='plan__year__total--2020'>30 credits</span></h4><div class="plan__semester" id="Fall-2020"><h5>Fall</h5><div class="plan__semester__total">0 Credits</div></div><div class="plan__semester" id="Winter-2020"><h5>Winter</h5><div class="plan__semester__total">0 Credits</div></div><div class="plan__semester" id="Spring-2020"><h5>Spring</h5><div class="plan__semester__total">0 Credits</div></div><div class="plan__semester" id="Summer-2020"><h5>Summer</h5><div class="plan__semester__total">0 Credits</div></div><div class="plan__planned-graduation">Planned<br>Graduation</div></div>
     		<div class="plan__total-credits">Total Credits: <span class="plan__total-credits__count"></span></div>
     	</section>
 

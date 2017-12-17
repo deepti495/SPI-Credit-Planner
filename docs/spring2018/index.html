@@ -42,6 +42,10 @@
 		    	<div class="setup__question setup__question--active">
 		    		<p>I plan to graduate in <br> 
 		  				<select class="select-graduation">
+	<option data-extended="1.5 years" data-label="May 2019" value="May 2019">May 2019 - 1.5 years</option>
+	<option data-extended="2 years (On Time)" data-label="January 2020" value="January 2020" selected>January 2020 - 2 years (On Time)</option>
+	<option data-extended="2.5 years" data-label="May 2020" value="May 2020">May 2020 - 2.5 years</option>
+	<option data-extended="3 years" data-label="January 2021" value="January 2021">January 2021 - 3 years</option>
 </select>
 							<span class="question__period">.</span>
 						</p>
@@ -50,6 +54,15 @@
 		    	<div class="setup__question setup__question--inactive">
 						<p>I need
 						<select id="select--required-credits">
+								<option value="60" selected>60</option>
+								<option value="61" >61</option>
+								<option value="62" >62</option>
+								<option value="63" >63</option>
+								<option value="64" >64</option>
+								<option value="65" >65</option>
+								<option value="66" >66</option>
+								<option value="67" >67</option>
+								<option value="60" >I&#x27;ll look it up</option>
 						</select>
 						credits <br> to grauduate<span class="question__period">.</span></p>
 					</div>
@@ -73,35 +86,35 @@
     	</section>
 
     	<section id="intro">
-    		<h3></h3>
+    		<h3>How many credits you take each semester will determine when you graduate.</h3>
     		<ul>
-    			<li class="note--recommended-credits"></li>
-    			<li class="note--full-time-status"></li>
+    			<li class="note--recommended-credits">CUNY recommends taking 30 credits in your first year.</li>
+    			<li class="note--full-time-status">Note: Taking fewer than 12 credits in your Fall and Spring semesters may affect your financial aid eligibility.</li>
     		</ul>
     	</section>
 
     	<section id="sliders">
-    		<div class="sliders__slider slider--primary"><label for="slider-Fall">Fall</label><button class="button--slider-controls button--slider-controls--add" data-for="Fall">+</button><input min="0"  max="20" type="range" id="slider-Fall"value="15" class="slider--15"><button class="button--slider-controls button--slider-controls--remove" data-for="Fall">&ndash;</button><span class="slider__value" id="slider__value--Fall"><span class="value__number">0</span><br>Credits</span></div><div class="sliders__slider"><label for="slider-Winter">Winter</label><button class="button--slider-controls button--slider-controls--add" data-for="Winter">+</button><input min="0"  max="20" type="range" id="slider-Winter"value="0" class="slider--0"><button class="button--slider-controls button--slider-controls--remove" data-for="Winter">&ndash;</button><span class="slider__value" id="slider__value--Winter"><span class="value__number">0</span><br>Credits</span></div><div class="sliders__slider slider--primary"><label for="slider-Spring">Spring</label><button class="button--slider-controls button--slider-controls--add" data-for="Spring">+</button><input min="0"  max="20" type="range" id="slider-Spring"value="15" class="slider--15"><button class="button--slider-controls button--slider-controls--remove" data-for="Spring">&ndash;</button><span class="slider__value" id="slider__value--Spring"><span class="value__number">0</span><br>Credits</span></div><div class="sliders__slider"><label for="slider-Summer">Summer</label><button class="button--slider-controls button--slider-controls--add" data-for="Summer">+</button><input min="0"  max="20" type="range" id="slider-Summer"value="0" class="slider--0"><button class="button--slider-controls button--slider-controls--remove" data-for="Summer">&ndash;</button><span class="slider__value" id="slider__value--Summer"><span class="value__number">0</span><br>Credits</span></div>
+    		<div class="sliders__slider slider--primary"><label for="slider-Spring">Spring</label><button class="button--slider-controls button--slider-controls--add" data-for="Spring">+</button><input min="0"  max="20" type="range" id="slider-Spring"value="15" class="slider--15"><button class="button--slider-controls button--slider-controls--remove" data-for="Spring">&ndash;</button><span class="slider__value" id="slider__value--Spring"><span class="value__number">0</span><br>Credits</span></div><div class="sliders__slider"><label for="slider-Summer">Summer</label><button class="button--slider-controls button--slider-controls--add" data-for="Summer">+</button><input min="0"  max="20" type="range" id="slider-Summer"value="0" class="slider--0"><button class="button--slider-controls button--slider-controls--remove" data-for="Summer">&ndash;</button><span class="slider__value" id="slider__value--Summer"><span class="value__number">0</span><br>Credits</span></div><div class="sliders__slider slider--primary"><label for="slider-Fall">Fall</label><button class="button--slider-controls button--slider-controls--add" data-for="Fall">+</button><input min="0"  max="20" type="range" id="slider-Fall"value="15" class="slider--15"><button class="button--slider-controls button--slider-controls--remove" data-for="Fall">&ndash;</button><span class="slider__value" id="slider__value--Fall"><span class="value__number">0</span><br>Credits</span></div><div class="sliders__slider"><label for="slider-Winter">Winter</label><button class="button--slider-controls button--slider-controls--add" data-for="Winter">+</button><input min="0"  max="20" type="range" id="slider-Winter"value="0" class="slider--0"><button class="button--slider-controls button--slider-controls--remove" data-for="Winter">&ndash;</button><span class="slider__value" id="slider__value--Winter"><span class="value__number">0</span><br>Credits</span></div>
     	</section>
 
     	<section id="status">
     		<div class="status__ontrack">
     			<p>
     				If you take a course load like this every year,
-    				you'll achieve your goal of graduating in <span class="status__graduation-date"> </span>.
+    				you'll achieve your goal of graduating in <span class="status__graduation-date">January 2020</span>.
     				<br>
     				👍 😁 <button class="big-button button--save-plan">Save Your Plan</button>
     			</p>
     		</div>
     		<div class="status__offtrack">
     			 <p>
-    				If you take a course load like this every year, you'll be <span class="status__deficit"></span> short of achieving your goal of graduating in <span class="status__graduation-date"> </span> 👎 😟
+    				If you take a course load like this every year, you'll be <span class="status__deficit"></span> short of achieving your goal of graduating in <span class="status__graduation-date">January 2020</span> 👎 😟
     			</p>
     		</div>
     	</section>
 
     	<section id="plan">
-    		
+    		<div class='plan__year' id='plan__year--2018'><h4>Planned Year One 2018 &mdash; <span class='plan__year__total--2018'>30 credits</span></h4><div class="plan__semester" id="Spring-2018"><h5>Spring</h5><div class="plan__semester__total">0 Credits</div></div><div class="plan__semester" id="Summer-2018"><h5>Summer</h5><div class="plan__semester__total">0 Credits</div></div><div class="plan__semester" id="Fall-2018"><h5>Fall</h5><div class="plan__semester__total">0 Credits</div></div><div class="plan__semester" id="Winter-2018"><h5>Winter</h5><div class="plan__semester__total">0 Credits</div></div><div class="plan__planned-graduation">Planned<br>Graduation</div></div><div class='plan__year' id='plan__year--2019'><h4>Potential Year Two 2019 &mdash; <span class='plan__year__total--2019'>30 credits</span></h4><div class="plan__semester" id="Spring-2019"><h5>Spring</h5><div class="plan__semester__total">0 Credits</div></div><div class="plan__semester" id="Summer-2019"><h5>Summer</h5><div class="plan__semester__total">0 Credits</div></div><div class="plan__semester" id="Fall-2019"><h5>Fall</h5><div class="plan__semester__total">0 Credits</div></div><div class="plan__semester" id="Winter-2019"><h5>Winter</h5><div class="plan__semester__total">0 Credits</div></div><div class="plan__planned-graduation">Planned<br>Graduation</div></div><div class='plan__year' id='plan__year--2020'><h4>Potential Year Three 2020 &mdash; <span class='plan__year__total--2020'>30 credits</span></h4><div class="plan__semester" id="Spring-2020"><h5>Spring</h5><div class="plan__semester__total">0 Credits</div></div><div class="plan__semester" id="Summer-2020"><h5>Summer</h5><div class="plan__semester__total">0 Credits</div></div><div class="plan__semester" id="Fall-2020"><h5>Fall</h5><div class="plan__semester__total">0 Credits</div></div><div class="plan__semester" id="Winter-2020"><h5>Winter</h5><div class="plan__semester__total">0 Credits</div></div><div class="plan__planned-graduation">Planned<br>Graduation</div></div>
     		<div class="plan__total-credits">Total Credits: <span class="plan__total-credits__count"></span></div>
     	</section>
 

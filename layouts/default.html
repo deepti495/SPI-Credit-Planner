@@ -3,8 +3,90 @@
     <head>
         {{> header }}
     </head>
-    <body>
-    	{{ content }}
+    <body class="configure">
+
+    	<section id="setup">
+
+    		<div class="setup__progress">Question <span class="setup__progress__step">1</span> of 
+    			{{#if default_current_credits}}4{{/if}}
+    			{{#unless default_current_credits}}3{{/unless}}
+    		</div>
+
+    		<div class="setup__questions">
+		    	<div class="setup__question setup__question--active">
+		    		<p>I plan to graduate in <br> 
+		  				{{{ graduation-options default_grad_year default_grad_month early_grad late_grad }}}
+							<span class="question__period">.</span>
+						</p>
+		    	</div>
+
+		    	<div class="setup__question setup__question--inactive">
+						<p>I need
+						<select id="select--required-credits">
+							{{#each credit_options}}
+								<option value="{{ creditValue }}" {{#if default}}selected{{/if}}>{{ label }}{{#unless label}}{{ creditValue }}{{/unless}}</option>
+							{{/each}}
+						</select>
+						credits <br> to grauduate<span class="question__period">.</span></p>
+					</div>
+
+		    	{{#if default_current_credits}}
+		    	<div class="setup__question setup__question--inactive">
+						<p>I have {{{ existing-credits 0 20 default_current_credits }}} <br> credits right now<span class="question__period">.</span></p>
+					</div>
+					{{/if}}
+
+					<div class="setup__question setup__question--inactive">
+						<p>I
+			      <select id="select--summer-classes">
+			        <option value="summers-winters-no" selected>don't plan</option>
+			        <option value="summers-winters-yes">plan</option>
+			      </select>
+			      to take <br> Summer Semester {{#unless split_semesters }}or <br> Winter Session{{/unless}} classes<span class="question__period">.</span></p>
+					</div>
+				</div>
+
+				<div class="setup__controls">
+					<button class="big-button button--setup">Next</button>
+					<div class="setup__skip">Skip</div>
+				</div>
+
+    	</section>
+
+    	<section id="intro">
+    		<h3>{{ title }}</h3>
+    		<ul>
+    			<li class="note--recommended-credits">{{ credit_rec_text }}</li>
+    			<li class="note--full-time-status">{{ full_time_text }}</li>
+    		</ul>
+    	</section>
+
+    	<section id="sliders">
+    		{{{ semester-sliders start_semester split_semesters }}}
+    	</section>
+
+    	<section id="status">
+    		<div class="status__ontrack">
+    			<p>
+    				If you take a course load like this every year,
+    				you'll achieve your goal of graduating in <span class="status__graduation-date">{{default_grad_month}} {{default_grad_year}}</span>.
+    				<br>
+    				👍 😁 <button class="big-button button--save-plan">Save Your Plan</button>
+    			</p>
+    		</div>
+    		<div class="status__offtrack">
+    			 <p>
+    				If you take a course load like this every year, you'll be <span class="status__deficit"></span> short of achieving your goal of graduating in <span class="status__graduation-date">{{default_grad_month}} {{default_grad_year}}</span> 👎 😟
+    			</p>
+    		</div>
+    	</section>
+
+    	<section id="plan">
+    		{{{ plan-chart start_semester start_year late_grad split_semesters }}}
+    		<div class="plan__total-credits">Total Credits: <span class="plan__total-credits__count"></span></div>
+    	</section>
+
+    	<img src="/images/cuny.svg" alt="CUNY" class="cuny-logo">
     	{{>scripts}}
     </body>
 </html>
