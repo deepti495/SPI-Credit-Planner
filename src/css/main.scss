@@ -197,10 +197,6 @@ html {
     }
 }
 
-#setup select, #setup .selectric-wrapper {
-    margin: 0 0.2em;
-}
-
 .selectric-items li {
     font-size: 16px;
 
@@ -248,9 +244,6 @@ html {
         .setup__progress,
         .setup__controls {
             display: none;
-        }
-        .selectric-wrapper.selectric-select-graduation {
-            margin-right: 0;
         }
     }
     .cuny-logo {
