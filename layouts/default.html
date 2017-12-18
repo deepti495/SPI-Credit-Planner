@@ -21,26 +21,28 @@
 		    	</div>
 
 		    	<div class="setup__question setup__question--inactive">
-						<p> 
-						I need<select id="select--required-credits">
+						<p>I need 
+						<select id="select--required-credits">
 							{{#each credit_options}}
 								<option value="{{ creditValue }}" {{#if default}}selected{{/if}}>{{ label }}{{#unless label}}{{ creditValue }}{{/unless}}</option>
 							{{/each}}
-						</select>credits <br> to graduate<span class="question__period">.</span></p>
+						</select>
+						credits <br> to graduate<span class="question__period">.</span></p>
 					</div>
 
 		    	{{#if default_current_credits}}
 		    	<div class="setup__question setup__question--inactive">
-						<p>I have{{{ existing-credits 0 20 default_current_credits }}}<br> credits right now<span class="question__period">.</span></p>
+						<p>I have {{{ existing-credits 0 20 default_current_credits }}} <br> credits right now<span class="question__period">.</span></p>
 					</div>
 					{{/if}}
 
 					<div class="setup__question setup__question--inactive">
-						<p>
-			      I<select id="select--summer-classes">
+						<p>I 
+			      <select id="select--summer-classes">
 			        <option value="summers-winters-no" selected>don't plan</option>
 			        <option value="summers-winters-yes">plan</option>
-			      </select>to take <br> Summer Semester {{#unless split_semesters }}or <br> Winter Session{{/unless}} classes<span class="question__period">.</span></p>
+			      </select>
+			      to take <br> Summer Semester {{#unless split_semesters }}or <br> Winter Session{{/unless}} classes<span class="question__period">.</span></p>
 					</div>
 				</div>
 

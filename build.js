@@ -98,14 +98,7 @@ var site = metalsmith(__dirname)
         'partials/**/*'
       ]
     }))
-  } else {
-    site = site
-    .use(htmlMinifier("*.html"),{
-      collapseWhitespace: true,
-      removeComments: true
-    })
   }
-
   site.build(function (err) {
     if (err) {
       console.log(err);
