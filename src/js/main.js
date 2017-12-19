@@ -194,11 +194,15 @@ function renderChart() {
 	// Highlight 30 credit warning
 	if (first_year_credits < 30) {
 		$(".rendered .note--recommended-credits").addClass("alerted");
+	} else {
+		$(".rendered .note--recommended-credits").removeClass("alerted");
 	}
 
 	// Highlight 12 credit warning
 	if ((spring_credits < 12) || (fall_credits < 12)) {
 		$(".rendered .note--full-time-status").addClass("alerted");
+	} else {
+		$(".rendered .note--full-time-status").removeClass("alerted");
 	}
 
 }
