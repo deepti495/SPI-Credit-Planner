@@ -552,7 +552,7 @@ html {
             background: url('/images/rays.svg') no-repeat center center;
             position: absolute;
             content: " ";
-            top: -130%;
+            top: -125%;
             z-index: -1;
             opacity: 0.25;
             left: 13%;
@@ -561,8 +561,24 @@ html {
             background-size: contain;
             animation: rotation 30s infinite linear;
         }
-    }
 
+        &.under-credit:after {
+            content: "\00d7";
+            position: absolute;
+            color: #FF5A5F;
+            font-weight: 400;
+            left: 48%;
+            top: -105%;
+            line-height: 1;
+            width: auto;
+            height: auto;
+            animation: none;
+            opacity: 1;
+            background: none;
+            z-index: 1;
+            font-size: 12em;
+        }
+    }
 }
 
 @keyframes rotation {

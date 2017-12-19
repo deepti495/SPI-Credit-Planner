@@ -149,7 +149,7 @@ function renderChart() {
 	if ($("#select--existing-credits").length != 0) {
 		var use_existing_credits = true;
 		var existing_credits = $("#select--existing-credits").val();
-		
+
 		fall_credits = existing_credits;
 	} else {
 		var use_existing_credits = false;
@@ -403,6 +403,7 @@ function renderChart() {
 	$('.plan__total-credits__count').html(extrapolated_credits)
 
 	var surplusCredits = 0;
+	$(".plan__planned-graduation").removeClass('under-credit')
 
 	if (extrapolated_credits > required_credits) {
 		surplusCredits = extrapolated_credits - required_credits;
@@ -424,6 +425,8 @@ function renderChart() {
 			$('.plan__total-credits__count').append(" (" + underCredit + " credits short)")
 			$('.status__deficit').html(underCredit + " credits ")
 		}
+
+		$(".plan__planned-graduation").addClass('under-credit')
 	}
 
 }
