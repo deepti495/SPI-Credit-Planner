@@ -172,6 +172,12 @@ html {
 
         select {
             font-size: .5em;
+            background: transparent;
+            color: $white;
+            border: none;
+            border-bottom: 2px solid $white;
+            font-weight: bold;
+            font-size: 0.8em;
         }
     }
 
@@ -431,7 +437,9 @@ html {
             text-align: center;
             line-height: 1.4;
             font-size: 1.4em;
+            padding-bottom: 0;
             color: $white;
+            box-sizing: border-box;
             font-weight: bold;
             border: none;
             background: transparent;
@@ -446,9 +454,9 @@ html {
 #status {
     max-width: 550px;
     width: 100%;
-    height: 230px;
+    min-height: 230px;
     margin: 0 auto;
-    padding: 0 25px;
+    padding: 0 25px 20px;
     box-sizing: border-box;
     text-align: center;
     font-size: 1.4em;
@@ -461,11 +469,17 @@ html {
     .status__offtrack {
         display: none;
     }
+
+    .small {
+        font-size: 14px;
+        display: block;
+        padding-top: 15px;
+        color: $pale;
+    }
 }
 
 #plan {
     background: rgba($white,0.8);
-    border-radius: 5px;
     color: $black;
     max-width: 600px;
     padding: 40px;
@@ -485,6 +499,15 @@ html {
             padding-top: 0;
         }
 
+    }
+
+    .plan__semester--Summer, .plan__semester--Winter {
+        opacity: 0.3;
+    }
+
+    &.summer-winter-classes .plan__semester--Summer, 
+    &.summer-winter-classes .plan__semester--Winter {
+        opacity: 1;
     }
 
     .plan__semester {
@@ -509,18 +532,17 @@ html {
     .plan__planned-graduation {
         display: none;
     }
-/* TEMPORARY */
 
-
-    #plan__year--2019 .plan__planned-graduation {
+    .graduation_year .plan__planned-graduation {
         display: block;
         font-weight: bold;
         flex: 0 0 33%;
         background: $white url('/images/cap-black.svg') no-repeat;
-        background-position: 50% 75%;
-        background-size: 50%;
-        text-align: center;
-        padding: 15px 25px 80px;
+        background-position: 90% 48%;
+        background-size: 40%;
+        border-radius: 2px;
+        text-align: left;
+        padding: 15px 100px 15px 20px;
         box-sizing: border-box;
         margin-top: 10px;
         margin-bottom: 1em;
@@ -530,18 +552,17 @@ html {
             background: url('/images/rays.svg') no-repeat center center;
             position: absolute;
             content: " ";
-            top: -100%;
+            top: -130%;
             z-index: -1;
             opacity: 0.25;
-            left: -100%;
-            width: 300%;
-            height: 300%;
+            left: 13%;
+            width: 250px;
+            height: 250px;
             background-size: contain;
             animation: rotation 30s infinite linear;
         }
     }
 
-/* END TEMP */
 }
 
 @keyframes rotation {
@@ -697,6 +718,9 @@ html {
     .rendered #setup {
         font-size: 1.5em;
         width: 500px;
+    }
+    #plan {
+        border-radius: 5px;
     }
 }
 

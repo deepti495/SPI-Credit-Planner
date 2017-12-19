@@ -38,8 +38,8 @@
 					<div class="setup__question setup__question--inactive">
 						<p>I 
 			      <select id="select--summer-classes">
-			        <option value="summers-winters-no" selected>don't plan</option>
-			        <option value="summers-winters-yes">plan</option>
+                    <option value="summers-winters-yes" selected>plan</option>
+			        <option value="summers-winters-no">don't plan</option>
 			      </select>
 			      to take <br> Summer Semester {{#unless split_semesters }}or <br> Winter Session{{/unless}} classes<span class="question__period">.</span></p>
 					</div>
@@ -68,9 +68,9 @@
     		<div class="status__ontrack">
     			<p>
     				If you take a course load like this every year,
-    				you'll achieve your goal of graduating in <span class="status__graduation-date">{{default_grad_month}} {{default_grad_year}}</span>.
-    				<br>
-    				👍 😁 <button class="big-button button--save-plan">Save Your Plan</button>
+    				you'll achieve your goal of graduating in <span class="status__graduation-date">{{default_grad_month}} {{default_grad_year}}</span>. 👍 😁 
+    			     <button class="big-button button--save-plan">Save Your Plan</button>
+                    <span class="small">Take it with you when you meet with your advisor.</span>
     			</p>
     		</div>
     		<div class="status__offtrack">

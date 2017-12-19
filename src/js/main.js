@@ -110,7 +110,7 @@ $(function() {
 
     $(".slider__value input").keyup(function () { 
     	var sliderID = $(this).attr('id');
-    	var semester = sliderID.substr(sliderID.indexOf("--") + 2);;
+    	var semester = sliderID.substr(sliderID.indexOf("--") + 2);
 
 	    this.value = this.value.replace(/[^0-9\.]/g,'');
 	    if (this.value == '') {
@@ -133,23 +133,36 @@ $(function() {
 function renderChart() {
 
 	// Get Current States
-
 	var planned_graduation = $("#select--planned-graduation").val();
 	var required_creidts = $("#select--required-credits").val();
 	var fall_credits = parseInt($("#slider__value--Fall").val());
 	var spring_credits = parseInt($("#slider__value--Spring").val());
 	var summer_credits = parseInt($("#slider__value--Summer").val());
 	var winter_credits = parseInt($("#slider__value--Winter").val());
+
+	var first_semester = $('.sliders__slider:first-child h4').html();
+
+	var planned_graduation_month = planned_graduation.split(" ")[0];
+	var planned_graduation_year = planned_graduation.split(" ")[1];
+
+	// Figure out conditional states
 	if ($("#select--existing-credits").length != 0) {
 		var use_existing_credits = true;
 		var existing_credits = $("#select--existing-credits").val();
+
+		if (first_semester == 'Spring') {
+			spring_credits = fall_credits;
+		} else {
+			fall_credits = spring_credits;
+		}
+
 	} else {
 		var use_existing_credits = false;
 	}
-	if ($("#select--summer-classes").val() == 'summers-winters-yes') {
-		var summer_winter_classes = true;
-	} else {
+	if ($("#select--summer-classes").val() == 'summers-winters-no') {
 		var summer_winter_classes = false;
+	} else {
+		var summer_winter_classes = true;
 	}
 	if ($(".sliders__slider").length == 3) {
 		var split_semester = true;
@@ -157,6 +170,7 @@ function renderChart() {
 		var split_semester = false;
 	}
 
+	// calculate how many credits are planned for first year
 	var first_year_credits = spring_credits + fall_credits;
 	if (summer_winter_classes) {
 		first_year_credits += summer_credits;
@@ -166,11 +180,13 @@ function renderChart() {
 	// Disable summer and winter semsester UI if unplanned
 	if (summer_winter_classes) {
 		$("#sliders").addClass('summer-winter-classes');
+		$("#plan").addClass('summer-winter-classes');
 	} else {
 		$("#sliders").removeClass('summer-winter-classes');
+		$("#plan").removeClass('summer-winter-classes');
 	}
 
-	// Set existing number of credits for the 1st semester (if any)
+	// Set existing number of credits for the 1st semester (if we're using those)
 	if (use_existing_credits) {
 		$("#sliders").addClass('use-existing-credits');
 		$(".sliders__slider:first-child .slider__value input").val(existing_credits);
@@ -191,19 +207,114 @@ function renderChart() {
 		}
 	})
 
-	// Highlight 30 credit warning
+	// Highlight 30 credit warning if under
 	if (first_year_credits < 30) {
 		$(".rendered .note--recommended-credits").addClass("alerted");
+		if ( $("body.second-warning").length == 0 ) {
+			alert("Attention: You need to take 30 credits your first year to be on track to graduate by " + planned_graduation);
+
+			if ( $("body.first-warning").length == 0 ) {
+				$("body").addClass('first-warning');
+			} else {
+				$("body").addClass('second-warning');
+			}
+		}
 	} else {
 		$(".rendered .note--recommended-credits").removeClass("alerted");
 	}
 
-	// Highlight 12 credit warning
+	// Highlight 12 credit warning if under
 	if ((spring_credits < 12) || (fall_credits < 12)) {
 		$(".rendered .note--full-time-status").addClass("alerted");
 	} else {
 		$(".rendered .note--full-time-status").removeClass("alerted");
 	}
+
+	// POPULATE THE CHART
+
+	// Extrapolate year one
+	$(".plan__semester--Spring .total__value").html(spring_credits);
+	$(".plan__semester--Fall .total__value").html(fall_credits); 
+
+	// Extrapolate summer/winter classes only if that's part of the plan
+	if (summer_winter_classes) {
+		$(".plan__semester--Summer .total__value").html(summer_credits);
+
+		// skip the winter session if we're building this for a split semester school
+		if (!split_semester) {
+			$(".plan__semester--Winter .total__value").html(winter_credits);
+		}
+	} else {
+		$(".plan__semester--Summer .total__value").html("0");
+
+		// skip the winter session if we're building this for a split semester school
+		if (!split_semester) {
+			$(".plan__semester--Winter .total__value").html("0");
+		}		
+	}
+
+	// Remove extra semesters
+	$(".plan__year").show();
+	$(".plan__year").removeClass('graduation_year');
+	$('.plan__semester--Fall').show();
+	$('.plan__semester--Winter').show();
+	$('.plan__semester--Summer').show();
+
+	$(".plan__year").each(function() {
+
+		var year = $(this).attr('id').split("--")[1];
+
+		if (planned_graduation_month == 'January') {
+
+			if (year > planned_graduation_year - 1) {
+				$(this).children('.plan__semester .total__value').html("0");
+				$(this).hide();
+			}
+			if (year == planned_graduation_year - 1) {
+				$(this).addClass('graduation_year')
+			}
+
+		} else {
+
+			console.log(year,planned_graduation_year)
+
+			if (year > planned_graduation_year) {
+				$(this).children('.plan__semester .total__value').html("0");
+				$(this).hide();
+			}
+			if (year == planned_graduation_year) {
+				$(this).addClass('graduation_year')
+				$(this).children('.plan__semester--Fall').hide();
+				$(this).children('.plan__semester--Winter').hide();
+				$(this).children('.plan__semester--Summer').hide();
+			}
+
+		}
+
+		// if (((year == planned_graduation_year) && planned_graduation != 'January') || ((year == planned_graduation_year - 1) && planned_graduation == 'January') ) {
+		// 	$(this).addClass('graduation_year');
+		// }
+		// if ((year == planned_graduation_year) && planned_graduation == 'January') {
+		// 	$(this).children('.plan__semester .total__value').html("0");
+		// 	$(this).hide();
+		// }
+	})
+
+	// Show the graduation marker
+
+	// Remove Extra credits
+
+	// Sum semesters by year
+
+	// Sum years
+
+	// Toggle on/offtrack message
+
+	// Populate credit total
+
+	// Populate over or under messages
+
+	// Change "Credits" to "Credit" where necessary
 
 }
 
@@ -217,4 +328,3 @@ function colorSlider(sliderSelector,value) {
 	$(sliderSelector).find("input").val(value);
 
 }
-

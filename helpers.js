@@ -164,7 +164,7 @@ helpers['plan-chart'] = (startSemester, startYear, lateGrad, splitSemester) => {
     }
   }
 
-  let totalYears = Math.ceil(2 + (parseInt(lateGrad) * 0.5));
+  let totalYears = Math.ceil(1 + (parseInt(lateGrad)));
   let currentYear = 0;
 
   while (currentYear < totalYears) {
@@ -200,15 +200,15 @@ helpers['plan-chart'] = (startSemester, startYear, lateGrad, splitSemester) => {
     html += " &mdash; <span class='plan__year__total--" + (parseInt(startYear) + currentYear) +"'>30 credits</span></h4>"
 
     for (var semester of semesters) {
-      html += '<div class="plan__semester" id="' + semester + "-" + (parseInt(startYear) + currentYear) + '">';
+      html += '<div class="plan__semester plan__semester--' + semester + '" id="' + semester + "-" + (parseInt(startYear) + currentYear) + '">';
       html += '<h5>' + semester + '</h5>';
-      html += '<div class="plan__semester__total">0 Credits</div>';
+      html += '<div class="plan__semester__total"><span class="total__value">0</span> Credits</div>';
       html += '</div>';
     }
 
     html += '<div class="plan__planned-graduation">Planned<br>Graduation</div>';
     html += "</div>";
-    currentYear++;
+    currentYear += 1;
   }
 
   return html;
