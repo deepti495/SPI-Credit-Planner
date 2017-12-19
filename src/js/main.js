@@ -47,6 +47,14 @@ $(function() {
     });
 
     $("select").change(function() {
+
+    	// check to see if we shoudl adjust credit/credits
+    	if($("#select--existing-credits").val() == 1) {
+    		$("#setup .credits--s").hide();
+    	} else {
+    		$("#setup .credits--s").show();
+    	}
+
     	renderChart();
     });
 
@@ -98,8 +106,27 @@ $(function() {
     	var selector = "#slider__boxes--" + semester;
     	colorSlider(selector,value)
     	renderChart()
-
     })
+
+    $(".slider__value input").keyup(function () { 
+    	var sliderID = $(this).attr('id');
+    	var semester = sliderID.substr(sliderID.indexOf("--") + 2);;
+
+	    this.value = this.value.replace(/[^0-9\.]/g,'');
+	    if (this.value == '') {
+	    	$(this).val("0");
+	    }
+
+	    if (((semester == 'Summer') || (semester == 'Winter')) && this.value > 0) {
+			$("#select--summer-classes").val('summers-winters-yes');
+			$("#select--summer-classes").selectric('refresh');
+		}
+
+	    var selector = "#slider__boxes--" + semester;
+
+	    colorSlider(selector,this.value)
+    	renderChart()
+	});
 
 });
 
@@ -148,6 +175,15 @@ function renderChart() {
 
 	// Update graduation date in UI
 	$(".status__graduation-date").html(planned_graduation);
+
+	// Adjust "Credit"/"Credits"
+	$(".slider__value").each(function() {
+		if ($(this).children('input').val() == 1) {
+			$(this).children(".credits--s").hide()
+		} else {
+			$(this).children(".credits--s").show();
+		}
+	})
 
 }
 
