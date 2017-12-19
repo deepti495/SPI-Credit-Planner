@@ -134,7 +134,7 @@ function renderChart() {
 
 	// Get Current States
 	var planned_graduation = $("#select--planned-graduation").val();
-	var required_creidts = $("#select--required-credits").val();
+	var required_credits = $("#select--required-credits").val();
 	var fall_credits = parseInt($("#slider__value--Fall").val());
 	var spring_credits = parseInt($("#slider__value--Spring").val());
 	var summer_credits = parseInt($("#slider__value--Summer").val());
@@ -149,13 +149,8 @@ function renderChart() {
 	if ($("#select--existing-credits").length != 0) {
 		var use_existing_credits = true;
 		var existing_credits = $("#select--existing-credits").val();
-
-		if (first_semester == 'Spring') {
-			spring_credits = fall_credits;
-		} else {
-			fall_credits = spring_credits;
-		}
-
+		
+		fall_credits = existing_credits;
 	} else {
 		var use_existing_credits = false;
 	}
@@ -190,7 +185,6 @@ function renderChart() {
 	if (use_existing_credits) {
 		$("#sliders").addClass('use-existing-credits');
 		$(".sliders__slider:first-child .slider__value input").val(existing_credits);
-		$(".sliders__slider:first-child .slider__value input").prop('disabled',true)
 		$(".sliders__slider:first-child button").addClass('disabled');
 		colorSlider(".sliders__slider:first-child",existing_credits);
 	}
@@ -234,7 +228,15 @@ function renderChart() {
 
 	// Extrapolate year one
 	$(".plan__semester--Spring .total__value").html(spring_credits);
-	$(".plan__semester--Fall .total__value").html(fall_credits); 
+	$(".plan__semester--Fall .total__value").html(fall_credits);
+
+	if (use_existing_credits) {
+		if (first_semester == 'Spring') {
+			$(".plan__semester--Spring:not(:first) .total__value").html(fall_credits);
+		} else {
+			$(".plan__semester--Fall:not(:first) .total__value").html(spring_credits);
+		}
+	}
 
 	// Extrapolate summer/winter classes only if that's part of the plan
 	if (summer_winter_classes) {
@@ -257,64 +259,172 @@ function renderChart() {
 	$(".plan__year").show();
 	$(".plan__year").removeClass('graduation_year');
 	$('.plan__semester--Fall').show();
-	$('.plan__semester--Winter').show();
+	$('.plan__semester--Spring').show();
 	$('.plan__semester--Summer').show();
+	$('.plan__semester--Winter').show();
 
 	$(".plan__year").each(function() {
 
 		var year = $(this).attr('id').split("--")[1];
 
-		if (planned_graduation_month == 'January') {
+		// Zero out and hide extra semesters
+		if (first_semester == 'Spring') {
+			if (planned_graduation_month == 'January') {
 
-			if (year > planned_graduation_year - 1) {
-				$(this).children('.plan__semester .total__value').html("0");
-				$(this).hide();
-			}
-			if (year == planned_graduation_year - 1) {
-				$(this).addClass('graduation_year')
-			}
+				if (year > planned_graduation_year - 1) {
+					$(this).find('.plan__semester .total__value').html("0");
+					$(this).hide();
+				}
+				if (year == planned_graduation_year - 1) {
+					$(this).addClass('graduation_year')
+				}
 
+			} else {
+
+				if (year > planned_graduation_year) {
+					$(this).find('.plan__semester .total__value').html("0");
+					$(this).hide();
+				}
+				if (year == planned_graduation_year) {
+					$(this).addClass('graduation_year')
+					$(this).find('.plan__semester--Fall').hide();
+					$(this).find('.plan__semester--Fall .total__value').html("0");
+					$(this).find('.plan__semester--Winter').hide();
+					$(this).find('.plan__semester--Winter .total__value').html("0");
+					$(this).find('.plan__semester--Summer').hide();
+					$(this).find('.plan__semester--Summer .total__value').html("0");
+				}
+
+			}
 		} else {
+			if (planned_graduation_month == 'January') {
 
-			console.log(year,planned_graduation_year)
+				if (year > planned_graduation_year - 1) {
+					$(this).find('.plan__semester .total__value').html("0");
+					$(this).hide();
+				}
+				if (year == planned_graduation_year - 1) {
+					$(this).addClass('graduation_year')
+					$(this).find('.plan__semester--Spring').hide();
+					$(this).find('.plan__semester--Spring .total__value').html("0");
+					$(this).find('.plan__semester--Summer').hide();
+					$(this).find('.plan__semester--Summer .total__value').html("0");
+				}
 
-			if (year > planned_graduation_year) {
-				$(this).children('.plan__semester .total__value').html("0");
-				$(this).hide();
+			} else {
+
+				if (year > planned_graduation_year - 1) {
+					$(this).find('.plan__semester .total__value').html("0");
+					$(this).hide();
+				}
+				if (year == planned_graduation_year - 1) {
+					$(this).addClass('graduation_year')
+					$(this).find('.plan__semester--Summer').hide();
+					$(this).find('.plan__semester--Summer .total__value').html("0");
+				}
+
 			}
-			if (year == planned_graduation_year) {
-				$(this).addClass('graduation_year')
-				$(this).children('.plan__semester--Fall').hide();
-				$(this).children('.plan__semester--Winter').hide();
-				$(this).children('.plan__semester--Summer').hide();
-			}
-
 		}
 
-		// if (((year == planned_graduation_year) && planned_graduation != 'January') || ((year == planned_graduation_year - 1) && planned_graduation == 'January') ) {
-		// 	$(this).addClass('graduation_year');
-		// }
-		// if ((year == planned_graduation_year) && planned_graduation == 'January') {
-		// 	$(this).children('.plan__semester .total__value').html("0");
-		// 	$(this).hide();
-		// }
 	})
 
-	// Show the graduation marker
+	// REMOVE EXTRA CREDITS
+	var raw_total_credits = rawCount();
 
-	// Remove Extra credits
+	if (raw_total_credits > required_credits) {
+		$($(".plan__semester--Winter:not(:first)").get().reverse()).each(function() {
+			var current_surplus = rawCount() - required_credits;
+			var this_value = parseInt($(this).find('.total__value').html());
+			if (current_surplus >= this_value) {
+				$(this).find('.total__value').html("0")
+			} else {
+				$(this).find('.total__value').html(this_value - current_surplus)
+			}
+		});
+	}
+	if (raw_total_credits > required_credits) {
+		$($(".plan__semester--Summer:not(:first)").get().reverse()).each(function() {
+			var current_surplus = rawCount() - required_credits;
+			var this_value = parseInt($(this).find('.total__value').html());
+			if (current_surplus >= this_value) {
+				$(this).find('.total__value').html("0")
+			} else {
+				$(this).find('.total__value').html(this_value - current_surplus)
+			}
+		});
+	}
+	if (raw_total_credits > required_credits) {
+		$($(".plan__year:not(:first) .plan__semester").get().reverse()).each(function() {
+			var current_surplus = rawCount() - required_credits;
+			var this_value = parseInt($(this).find('.total__value').html());
+
+			if (this_value > 11) {
+				if (current_surplus >= (this_value - 12)) {
+					$(this).find('.total__value').html("12")
+				} else {
+					$(this).find('.total__value').html(this_value - current_surplus)
+				}
+			}
+
+		});
+	}
 
 	// Sum semesters by year
+	var extrapolated_credits = 0;
 
-	// Sum years
+	$(".plan__year").each(function() {
+
+		var year_credits = 0;
+
+		$(this).find('.total__value').each(function() {
+			year_credits += parseInt($(this).html());
+		})
+
+		if (year_credits == 1) {
+			$(this).find('.plan__year__total').html(year_credits + " Credit")
+		} else {
+			$(this).find('.plan__year__total').html(year_credits + " Credits")
+		}
+
+		extrapolated_credits += year_credits;
+
+	});
 
 	// Toggle on/offtrack message
+	if(extrapolated_credits >= required_credits) {
+		$('.status__ontrack').show();
+		$('.status__offtrack').hide();
+	} else {
+		$('.status__ontrack').hide();
+		$('.status__offtrack').show();
+	}
 
-	// Populate credit total
+	// Populate credit total & over/under messages
+	$('.plan__total-credits__count').html(extrapolated_credits)
 
-	// Populate over or under messages
+	var surplusCredits = 0;
 
-	// Change "Credits" to "Credit" where necessary
+	if (extrapolated_credits > required_credits) {
+		surplusCredits = extrapolated_credits - required_credits;
+
+		if (surplusCredits == 1) {
+			$('.plan__total-credits__count').html(required_credits + " (Plus " + surplusCredits + " Extra Credit)")
+		} else if (surplusCredits > 1) {
+			$('.plan__total-credits__count').html(required_credits + " (Plus " + surplusCredits + " Extra Credits)")
+		}
+	}
+
+	if (extrapolated_credits < required_credits) {
+		underCredit = required_credits - extrapolated_credits;
+
+		if (underCredit == 1) {
+			$('.plan__total-credits__count').append(" (" + underCredit + " credit short)")
+			$('.status__deficit').html(underCredit + " credit ")
+		} else if (underCredit > 1) {
+			$('.plan__total-credits__count').append(" (" + underCredit + " credits short)")
+			$('.status__deficit').html(underCredit + " credits ")
+		}
+	}
 
 }
 
@@ -327,4 +437,13 @@ function colorSlider(sliderSelector,value) {
 
 	$(sliderSelector).find("input").val(value);
 
+}
+
+function rawCount() {
+	var raw_total_credit_count = 0;
+	$('.total__value').each(function() {
+		raw_total_credit_count += parseInt($(this).html())
+	})
+
+	return raw_total_credit_count;
 }

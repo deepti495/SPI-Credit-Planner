@@ -197,7 +197,7 @@ helpers['plan-chart'] = (startSemester, startYear, lateGrad, splitSemester) => {
         break;
     }
     html += " " + (parseInt(startYear) + currentYear)
-    html += " &mdash; <span class='plan__year__total--" + (parseInt(startYear) + currentYear) +"'>30 credits</span></h4>"
+    html += " &mdash; <span class='plan__year__total plan__year__total--" + (parseInt(startYear) + currentYear) +"'>30 credits</span></h4>"
 
     for (var semester of semesters) {
       html += '<div class="plan__semester plan__semester--' + semester + '" id="' + semester + "-" + (parseInt(startYear) + currentYear) + '">';

@@ -73,7 +73,7 @@ credit_options:
     default: false
     label: I'll look it up
     creditValue: 60
-split_semesters: false
+split_semesters: true
 layout: default.html
 ---
 
