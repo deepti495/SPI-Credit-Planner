@@ -171,13 +171,11 @@ html {
         }
 
         select {
-            font-size: .5em;
             background: transparent;
-            color: $white;
+            color: $main-blue;
             border: none;
-            border-bottom: 2px solid $white;
             font-weight: bold;
-            font-size: 0.8em;
+            font-size: 0.5em;
         }
     }
 
