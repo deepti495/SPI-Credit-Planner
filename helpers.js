@@ -10,7 +10,7 @@ helpers['url-encode'] = (source) => {
 
 helpers['graduation-options'] = (defaultYear, defaultMonth, earlyGrad, lateGrad) => {
 
-  let html = '<select class="select-graduation">\n';
+  let html = '<select  id="select--planned-graduation">\n';
 
   let defaultDate = parseInt(defaultYear);
 
@@ -117,7 +117,7 @@ helpers['semester-sliders'] = (startSemester, splitSemester) => {
 
     html += "<div class='slider__boxes'>"
     var counter = 20;
-    while (counter >= 0) {
+    while (counter > 0) {
       html += "<div class='slider__box slider__box--" + counter;
       if (((semester == 'Spring') || (semester == 'Fall')) && counter <= 15) {
         html += " slider__box--filled' "

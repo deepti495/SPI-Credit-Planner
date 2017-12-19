@@ -309,10 +309,16 @@ html {
         display: flex;
         flex-direction: column;
         flex: 0 1 25%;
+        opacity: 0.33;
 
         &.slider--primary {
             flex: 1 0 33%;
+            opacity: 1;
         }
+    }
+
+    &.summer-winter-classes .sliders__slider {
+        opacity: 1;
     }
 
     .slider__box {
@@ -322,7 +328,7 @@ html {
         color: transparent;
         transition: color 0.2s;
         background: rgba($black,0.2);
-        border: 1px solid rgba($black,0.3);
+        border: 1px solid rgba($black,0.25);
 
         &.slider__box--filled {
             background: linear-gradient(to bottom, #46D5C4 33%, #5ff0dd 100%);
@@ -343,7 +349,6 @@ html {
     .slider__box--0 {
         border-radius: 0 0 3px 3px;
     }
-
 
     .button--slider-controls {
         background: transparent;
