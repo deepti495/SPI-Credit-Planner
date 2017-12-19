@@ -157,7 +157,13 @@ function renderChart() {
 		var split_semester = false;
 	}
 
-	// Disable summer and winter semsester UI
+	var first_year_credits = spring_credits + fall_credits;
+	if (summer_winter_classes) {
+		first_year_credits += summer_credits;
+		first_year_credits += winter_credits;
+	}
+
+	// Disable summer and winter semsester UI if unplanned
 	if (summer_winter_classes) {
 		$("#sliders").addClass('summer-winter-classes');
 	} else {
@@ -184,6 +190,16 @@ function renderChart() {
 			$(this).children(".credits--s").show();
 		}
 	})
+
+	// Highlight 30 credit warning
+	if (first_year_credits < 30) {
+		$(".rendered .note--recommended-credits").addClass("alerted");
+	}
+
+	// Highlight 12 credit warning
+	if ((spring_credits < 12) || (fall_credits < 12)) {
+		$(".rendered .note--full-time-status").addClass("alerted");
+	}
 
 }
 
