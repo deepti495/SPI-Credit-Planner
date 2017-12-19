@@ -44,14 +44,6 @@ $(function() {
 
     });
 
-    $("input[type='range']").change(function() {
-    		var slider = $(this);
-    		var sliderClass = "slider--" +slider.val();
-
-    		slider.removeClass().addClass(sliderClass)
-
-    })
-
 });
 
 function renderChart() {

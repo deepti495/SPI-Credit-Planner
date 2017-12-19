@@ -303,28 +303,57 @@ html {
     margin: 0 auto;
 
     .sliders__slider {
-        width: 25%;
         box-sizing: border-box;
-        flex: 1 1 25%;
-        left: 2%;
+        padding: 0 5px;
         position: relative;
-        height: 470px;
         display: flex;
         flex-direction: column;
+        flex: 0 1 25%;
 
+        &.slider--primary {
+            flex: 1 0 33%;
+        }
     }
 
+    .slider__box {
+        margin-bottom: 1px;
+        font-size: 12px;
+        padding: 0 3px;
+        color: transparent;
+        transition: color 0.2s;
+        background: rgba($black,0.2);
+        border: 1px solid rgba($black,0.3);
+
+        &.slider__box--filled {
+            background: linear-gradient(to bottom, #46D5C4 33%, #5ff0dd 100%);
+            box-shadow: 0 0 15px rgba(110,254,234,0.33), 0 0 4px rgba(137,255,255,0.66);
+            border: 1px solid #76fff1;
+        }
+        &:hover {
+            color: #199484;
+            transition: none;
+            background: linear-gradient(to bottom, #46D5C4 33%, #5ff0dd 100%);
+            box-shadow: 0 0 15px rgba(110,254,234,0.33), 0 0 4px rgba(137,255,255,0.66);
+            border: 1px solid #76fff1;
+        }
+    }
+    .slider__box--20 {
+        border-radius: 3px 3px 0 0;
+    }
+    .slider__box--0 {
+        border-radius: 0 0 3px 3px;
+    }
+
+
     .button--slider-controls {
-        position: absolute;
         background: transparent;
         color: $yellow;
         border: none;
         font-size: 1.5em;
         cursor: pointer;
         font-weight: bold;
-        width: 30px;
-        height: 70px;
-        bottom: 20px;
+        box-sizing: border-box;
+        width: 50%;
 
         &:hover {
             color: $white;
@@ -336,455 +365,52 @@ html {
     }
 
     .button--slider-controls--add {
-        left: 20%;
+        text-align: right;
+        padding: 0 10px 0 0;
     }
     .button--slider-controls--remove {
-        right: 20%;
+        text-align: left;
+        padding: 0 0 0 10px;
     }
 
     input {
-        position: relative;
-        -webkit-appearance: none;
         background: transparent;
-        width: 365px;
-        height: 70px;
-        top: 73%;
-        left: 50%;
-        transform-origin: left center;
-        transform: rotate(-90deg);
-
-        // Thumb
-        &::-webkit-slider-thumb {
-            -webkit-appearance: none; // needed again for Chrome & Safari
-            @include rangeThumb;
-        }
-
-        &::-moz-range-thumb {
-            @include rangeThumb;
-        }
-
-        &::-ms-thumb {
-            @include rangeThumb;
-        }
-
-        // Track
-        &::-webkit-slider-runnable-track {
-            @include rangeTrack;
-        }
-
-        &::-moz-range-track {
-            @include rangeTrack;
-        }
-
-        &::-ms-track {
-            @include rangeTrack;
-        }
-
-        &.slider--0 {
-            &::-webkit-slider-runnable-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 100%, $neon 100%);
-                background-size: 100%;
-            }
-
-            &::-moz-range-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 100%, $neon 100%);
-                background-size: 100%;
-            }
-
-            &::-ms-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 100%, $neon 100%);
-                background-size: 100%;
-            }
-        }
-        &.slider--1 {
-            &::-webkit-slider-runnable-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 95%, $neon 95%);
-                background-size: 100%;
-            }
-
-            &::-moz-range-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 95%, $neon 95%);
-                background-size: 100%;
-            }
-
-            &::-ms-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 95%, $neon 95%);
-                background-size: 100%;
-            }
-        }
-        &.slider--2 {
-            &::-webkit-slider-runnable-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 90%, $neon 90%);
-                background-size: 100%;
-            }
-
-            &::-moz-range-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 90%, $neon 90%);
-                background-size: 100%;
-            }
-
-            &::-ms-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 90%, $neon 90%);
-                background-size: 100%;
-            }
-        }
-        &.slider--3 {
-            &::-webkit-slider-runnable-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 85%, $neon 85%);
-                background-size: 100%;
-            }
-
-            &::-moz-range-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 85%, $neon 85%);
-                background-size: 100%;
-            }
-
-            &::-ms-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 85%, $neon 85%);
-                background-size: 100%;
-            }
-        }
-        &.slider--4 {
-            &::-webkit-slider-runnable-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 80%, $neon 80%);
-                background-size: 100%;
-            }
-
-            &::-moz-range-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 80%, $neon 80%);
-                background-size: 100%;
-            }
-
-            &::-ms-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 80%, $neon 80%);
-                background-size: 100%;
-            }
-        }
-        &.slider--5 {
-            &::-webkit-slider-runnable-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 75%, $neon 75%);
-                background-size: 100%;
-            }
-
-            &::-moz-range-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 75%, $neon 75%);
-                background-size: 100%;
-            }
-
-            &::-ms-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 75%, $neon 75%);
-                background-size: 100%;
-            }
-        }
-        &.slider--6 {
-            &::-webkit-slider-runnable-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 70%, $neon 70%);
-                background-size: 100%;
-            }
-
-            &::-moz-range-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 70%, $neon 70%);
-                background-size: 100%;
-            }
-
-            &::-ms-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 70%, $neon 70%);
-                background-size: 100%;
-            }
-        }
-        &.slider--7 {
-            &::-webkit-slider-runnable-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 65%, $neon 65%);
-                background-size: 100%;
-            }
-
-            &::-moz-range-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 65%, $neon 65%);
-                background-size: 100%;
-            }
-
-            &::-ms-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 65%, $neon 65%);
-                background-size: 100%;
-            }
-        }
-        &.slider--8 {
-            &::-webkit-slider-runnable-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 60%, $neon 60%);
-                background-size: 100%;
-            }
-
-            &::-moz-range-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 60%, $neon 60%);
-                background-size: 100%;
-            }
-
-            &::-ms-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 60%, $neon 60%);
-                background-size: 100%;
-            }
-        }
-        &.slider--9 {
-            &::-webkit-slider-runnable-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 55%, $neon 55%);
-                background-size: 100%;
-            }
-
-            &::-moz-range-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 55%, $neon 55%);
-                background-size: 100%;
-            }
-
-            &::-ms-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 55%, $neon 55%);
-                background-size: 100%;
-            }
-        }
-        &.slider--10 {
-            &::-webkit-slider-runnable-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 50%, $neon 50%);
-                background-size: 100%;
-            }
-
-            &::-moz-range-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 50%, $neon 50%);
-                background-size: 100%;
-            }
-
-            &::-ms-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 50%, $neon 50%);
-                background-size: 100%;
-            }
-        }
-        &.slider--11 {
-            &::-webkit-slider-runnable-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 45%, $neon 45%);
-                background-size: 100%;
-            }
-
-            &::-moz-range-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 45%, $neon 45%);
-                background-size: 100%;
-            }
-
-            &::-ms-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 45%, $neon 45%);
-                background-size: 100%;
-            }
-        }
-        &.slider--12 {
-            &::-webkit-slider-runnable-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 40%, $neon 40%);
-                background-size: 100%;
-            }
-
-            &::-moz-range-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 40%, $neon 40%);
-                background-size: 100%;
-            }
-
-            &::-ms-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 40%, $neon 40%);
-                background-size: 100%;
-            }
-        }
-        &.slider--13 {
-            &::-webkit-slider-runnable-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 35%, $neon 35%);
-                background-size: 100%;
-            }
-
-            &::-moz-range-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 35%, $neon 35%);
-                background-size: 100%;
-            }
-
-            &::-ms-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 35%, $neon 35%);
-                background-size: 100%;
-            }
-        }
-        &.slider--14 {
-            &::-webkit-slider-runnable-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 30%, $neon 30%);
-                background-size: 100%;
-            }
-
-            &::-moz-range-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 30%, $neon 30%);
-                background-size: 100%;
-            }
-
-            &::-ms-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 30%, $neon 30%);
-                background-size: 100%;
-            }
-        }
-        &.slider--15 {
-            &::-webkit-slider-runnable-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 25%, $neon 25%);
-                background-size: 100%;
-            }
-
-            &::-moz-range-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 25%, $neon 25%);
-                background-size: 100%;
-            }
-
-            &::-ms-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 25%, $neon 25%);
-                background-size: 100%;
-            }
-        }
-        &.slider--16 {
-            &::-webkit-slider-runnable-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 20%, $neon 20%);
-                background-size: 100%;
-            }
-
-            &::-moz-range-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 20%, $neon 20%);
-                background-size: 100%;
-            }
-
-            &::-ms-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 20%, $neon 20%);
-                background-size: 100%;
-            }
-        }
-        &.slider--17 {
-            &::-webkit-slider-runnable-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 15%, $neon 15%);
-                background-size: 100%;
-            }
-
-            &::-moz-range-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 15%, $neon 15%);
-                background-size: 100%;
-            }
-
-            &::-ms-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 15%, $neon 15%);
-                background-size: 100%;
-            }
-        }
-        &.slider--18 {
-            &::-webkit-slider-runnable-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 10%, $neon 10%);
-                background-size: 100%;
-            }
-
-            &::-moz-range-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 10%, $neon 10%);
-                background-size: 100%;
-            }
-
-            &::-ms-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 10%, $neon 10%);
-                background-size: 100%;
-            }
-        }
-        &.slider--19 {
-            &::-webkit-slider-runnable-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 5%, $neon 5%);
-                background-size: 100%;
-            }
-
-            &::-moz-range-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 5%, $neon 5%);
-                background-size: 100%;
-            }
-
-            &::-ms-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 5%, $neon 5%);
-                background-size: 100%;
-            }
-        }
-        &.slider--20 {
-            &::-webkit-slider-runnable-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 0%, $neon 0%);
-                background-size: 100%;
-            }
-
-            &::-moz-range-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 0%, $neon 0%);
-                background-size: 100%;
-            }
-
-            &::-ms-track {
-                background: url('/images/slider-bg.svg') repeat center center, linear-gradient(to left, rgba($black,0.3) 0%, $neon 0%);
-                background-size: 100%;
-            }
-        }
-
-        &:focus { // override outline/background on focus
-            background: none;
-            outline: none;
-        }
-
-        &::-ms-track { // A little somethin' somethin' for IE
-            width: 100%;
-            cursor: pointer;
-            background: transparent;
-            border-color: transparent;
-            color: transparent;
-        }
-    }
-    .slider--primary input {
-        &::-webkit-slider-runnable-track {
-            width: 365px;
-            height: 100px;
-            top: 75%;
-            left: 50%;
-        }
-
-        &::-moz-range-track {
-            width: 365px;
-            height: 100px;
-            top: 75%;
-            left: 50%;
-        }
-
-        &::-ms-track {
-            width: 365px;
-            height: 100px;
-            top: 75%;
-            left: 50%;
-        }
     }
 
-    // .slider--primary input {
-    //     height: 120px;
-    //     top: 21%;
-    // }
-
-    label {
-        width: 100%;
-        text-align: center;
+    h4 {
+        margin: 0 0 0.5em;
+        text-align: left;
+        font-weight: 400;
         color: $white;
-        font-weight: bold;
     }
 
     .slider__value {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        text-align: center;
-        line-height: 1.4;
-        font-size: .8em;
         color: $pale;
+        font-weight: bold;
+        font-size: 1em;
+        padding-bottom: 5px;
+        text-align: center;
 
-        .value__number {
+        input {
+            font-family: inherit;
+            width: 100%;
+            text-align: center;
+            line-height: 1.4;
+            font-size: 1.4em;
             color: $white;
             font-weight: bold;
-            font-size: 1.8em;
-            padding-bottom: 5px;
+            border: none;
+            background: transparent;
+
+            &:focus, &:active {
+                outline: none;
+            }
         }
     }
 }
 
 #status {
-    max-width: 500px;
+    max-width: 550px;
     width: 100%;
     height: 230px;
     margin: 0 auto;
@@ -1047,9 +673,6 @@ html {
         p {
             font-size: 4.2em;
         }
-    }
-    .selectric-items ul, .selectric-items li {
-        font-size: .8em;
     }
 
 }

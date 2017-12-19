@@ -113,17 +113,30 @@ helpers['semester-sliders'] = (startSemester, splitSemester) => {
       html += ' slider--primary';
     }
     html += '">';
-    html += '<label for="slider-' + semester + '">' + semester + '</label>';
-    html += '<button class="button--slider-controls button--slider-controls--add" data-for="' + semester + '">+</button>';
-    html += '<input min="0"  max="20" type="range" id="slider-' + semester + '"';
-    if ((semester == 'Spring') || (semester == 'Fall')) {
-      html += 'value="15" class="slider--15"';
-    } else {
-      html += 'value="0" class="slider--0"';
+    html += '<h4>' + semester + '</h4>';
+
+    html += "<div class='slider__boxes'>"
+    var counter = 20;
+    while (counter >= 0) {
+      html += "<div class='slider__box slider__box--" + counter;
+      if (((semester == 'Spring') || (semester == 'Fall')) && counter <= 15) {
+        html += " slider__box--filled' "
+      }
+      html += "'>" + counter + "</div>";
+
+      counter--;
     }
-    html += '>';
-    html += '<button class="button--slider-controls button--slider-controls--remove" data-for="' + semester + '">&ndash;</button>';
-    html += '<span class="slider__value" id="slider__value--' + semester + '"><span class="value__number">0</span><br>Credits</span>'
+    html += '</div>'
+
+    html += '<div class="slider--buttons"><button class="button--slider-controls button--slider-controls--add" data-for="' + semester + '">+</button>';
+    html += '<button class="button--slider-controls button--slider-controls--remove" data-for="' + semester + '">&ndash;</button></div>';
+    html += '<div class="slider__value"><input';
+    if ((semester == 'Spring') || (semester == 'Fall')) {
+      html += ' value="15" ';
+    } else {
+      html += ' value="0" ';
+    }
+    html += 'id="slider__value--' + semester + '" type="text"><br>Credit<span class="credits--s">s</span></div>'
     html += '</div>';
   }
 
