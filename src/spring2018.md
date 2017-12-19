@@ -8,7 +8,7 @@ default_grad_month: January
 default_grad_year: '2019'
 early_grad: 1
 late_grad: 2
-default_current_credits: 15
+default_current_credits: 0
 credit_options:
   - id: '145307'
     itemType: credit_option

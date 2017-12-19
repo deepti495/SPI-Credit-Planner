@@ -350,6 +350,32 @@ html {
         border-radius: 0 0 3px 3px;
     }
 
+    &.use-existing-credits {
+        .sliders__slider:first-child .slider__box {
+
+            &.slider__box--filled {
+                background: linear-gradient(to bottom, #844ed4 33%, #9d65ee 100%);
+                box-shadow: 0 0 15px rgba(199,138,255,0.2);
+                border: 1px solid #b47cff;
+
+                &:hover {
+                    color: transparent; 
+                    background: linear-gradient(to bottom, #844ed4 33%, #9d65ee 100%);
+                    box-shadow: 0 0 15px rgba(199,138,255,0.2);
+                    border: 1px solid #b47cff;
+                }
+            }
+            
+            &:hover {
+                color: transparent; 
+                transition: none;
+                background: rgba($black,0.2);
+                border: 1px solid rgba($black,0.25);
+                box-shadow: none;
+            }
+        }
+    }
+
     .button--slider-controls {
         background: transparent;
         color: $yellow;
@@ -366,6 +392,12 @@ html {
 
         &:active, &:focus {
             outline: none;
+        }
+
+        &.disabled {
+            opacity: 0.15;
+            cursor: default;
+            color: $pale;
         }
     }
 

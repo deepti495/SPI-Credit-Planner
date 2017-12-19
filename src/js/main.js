@@ -50,6 +50,57 @@ $(function() {
     	renderChart();
     });
 
+    $(".slider__box").click(function() {
+
+    	if (($(this).parents(".use-existing-credits").length == 0) || ($(this).parents(".sliders__slider:first-child").length == 0)) {
+	    	var value = $(this).data('value');
+	    	var semester = $(this).data('semester');
+
+	    	var selector = "#slider__boxes--" + semester;
+
+	    	if (($(this).data("semester") == 'Summer') || ($(this).data("semester") == 'Winter')) {
+    			$("#select--summer-classes").val('summers-winters-yes');
+    			$("#select--summer-classes").selectric('refresh');
+    		}
+
+	    	colorSlider(selector,value);
+	    	renderChart();
+    	}
+    })
+
+    $(".button--slider-controls--add").click(function() {
+    	var semester = $(this).data('for');
+    	var value = $("#slider__value--" + semester).val();
+    	
+    	if (value < 20) {
+    		value++;
+    	}
+
+		if ((semester == 'Summer') || (semester == 'Winter')) {
+			$("#select--summer-classes").val('summers-winters-yes');
+			$("#select--summer-classes").selectric('refresh');
+		}
+
+    	var selector = "#slider__boxes--" + semester;
+    	colorSlider(selector,value)
+    	renderChart()
+
+    })
+
+    $(".button--slider-controls--remove").click(function() {
+    	var semester = $(this).data('for');
+    	var value = $("#slider__value--" + semester).val();
+    	
+    	if (value > 0) {
+    		value--;
+    	}
+
+    	var selector = "#slider__boxes--" + semester;
+    	colorSlider(selector,value)
+    	renderChart()
+
+    })
+
 });
 
 function renderChart() {
@@ -79,30 +130,35 @@ function renderChart() {
 		var split_semester = false;
 	}
 
+	// Disable summer and winter semsester UI
 	if (summer_winter_classes) {
-		$("#sliders").addClass('summer-winter-classes')
+		$("#sliders").addClass('summer-winter-classes');
 	} else {
-		$("#sliders").removeClass('summer-winter-classes')
+		$("#sliders").removeClass('summer-winter-classes');
 	}
 
-	console.log(planned_graduation);
-	console.log(required_creidts);
-	console.log(fall_credits);
-	console.log(spring_credits);
-	console.log(summer_credits);
-	console.log(winter_credits);
-	console.log(use_existing_credits);
-	console.log(existing_credits);
-	console.log(summer_winter_classes);
-	console.log(split_semester);
+	// Set existing number of credits for the 1st semester (if any)
+	if (use_existing_credits) {
+		$("#sliders").addClass('use-existing-credits');
+		$(".sliders__slider:first-child .slider__value input").val(existing_credits);
+		$(".sliders__slider:first-child .slider__value input").prop('disabled',true)
+		$(".sliders__slider:first-child button").addClass('disabled');
+		colorSlider(".sliders__slider:first-child",existing_credits);
+	}
 
+	// Update graduation date in UI
+	$(".status__graduation-date").html(planned_graduation);
 
 }
 
-function handleSlider(slider) {
+function colorSlider(sliderSelector,value) {
 
-	// this sets the gradient for one slider to the correct color stops
-	// needs a prepared <style> tag created by initSliders()
+	$(sliderSelector).find(".slider__box").removeClass("slider__box--filled")
+	for (i = 0; i <= value; i++) {
+		$(sliderSelector).find(".slider__box--"+i).addClass("slider__box--filled")
+	}
+
+	$(sliderSelector).find("input").val(value);
 
 }
 

@@ -108,12 +108,16 @@ helpers['semester-sliders'] = (startSemester, splitSemester) => {
   }
 
   for (var semester of semesters) {
-    html += '<div class="sliders__slider';
+    html += '<div  id="slider__boxes--' + semester + '" class="sliders__slider';
     if ((semester == 'Spring') || (semester == 'Fall')) {
       html += ' slider--primary';
     }
     html += '">';
-    html += '<h4>' + semester + '</h4>';
+    html += '<h4>' + semester
+    if (splitSemester && ((semester == 'Spring') || (semester == 'Fall'))) {
+      html += ' I & II';
+    }
+    html += '</h4>';
 
     html += "<div class='slider__boxes'>"
     var counter = 20;
@@ -122,7 +126,7 @@ helpers['semester-sliders'] = (startSemester, splitSemester) => {
       if (((semester == 'Spring') || (semester == 'Fall')) && counter <= 15) {
         html += " slider__box--filled' "
       }
-      html += "'>" + counter + "</div>";
+      html += "' data-value='" + counter + "' data-semester='" + semester + "'>" + counter + "</div>";
 
       counter--;
     }
