@@ -766,6 +766,8 @@ html {
     *,
     *:before,
     *:after {
+        text-align: left;
+        color: #000 !important;
         background: transparent !important;
         color: #000 !important; /* Black prints faster:
                                    http://www.sanbeiji.com/archives/953 */
@@ -774,27 +776,40 @@ html {
         text-shadow: none !important;
     }
 
-    a,
-    a:visited {
-        text-decoration: underline;
+
+    
+    #sliders {
+        display: none;
+    }
+    #intro {
+        display: none;
+        max-width: 570px;
+        margin: 0 auto;
     }
 
-    a[href]:after {
-        content: " (" attr(href) ")";
+    .rendered #setup {
+        width: auto;
+        max-width: 520px;
     }
-
-    abbr[title]:after {
-        content: " (" attr(title) ")";
+    .rendered #setup .setup__question {
+        display: block;
     }
-
-    /*
-     * Don't show links that are fragment identifiers,
-     * or use the `javascript:` pseudo protocol
-     */
-
-    a[href^="#"]:after,
-    a[href^="javascript:"]:after {
-        content: "";
+    .button--save-plan {
+        display: none;
+    }
+    #status {
+        min-height: auto;
+        height: auto;
+        max-width: 570px;
+    }
+    #status .small {
+        display: none;
+    }
+    .rendered .cuny-logo {
+        display: none;
+    }
+    .selectric {
+        top: 4px;
     }
 
     pre {
