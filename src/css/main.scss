@@ -260,23 +260,21 @@ html {
 }
 
 #intro {
-    width: 95%;
-    max-width: 600px;
+    width: 100%;
+    flex: 1 0 100%;
     margin: 0 auto;
-    background: rgba($pale, 0.7);
-    color: $black;
-    border-radius: 5px;
-    padding: 0;
 
     h3 {
         margin: 0;
-        padding: 20px 30px;
-        border-radius: 5px 5px 0 0;
-        background: rgba($white,0.7);
+        padding: 10px 10px 0;
+        color: $white;
+        font-weight: 600;
+        line-height: 1.23em;
     }
     ul {
         font-size: 16px;
-        padding: 10px 30px 30px 50px;
+        padding: 5px 0 15px 30px;
+        font-size: 0.9em;
     }
 
     .note span {
@@ -296,12 +294,18 @@ html {
 }
 
 #sliders {
-    padding: 50px 0 25px;
-    display: flex;
-    width: 90%;
+    border: 1px solid rgba($white,0.33);
+    border-width: 1px 0;
+    background: rgba($black,0.2);
+    padding: 15px 15px 25px;
+    box-sizing: border-box;
     justify-content: center;
     max-width: 500px;
     margin: 0 auto;
+
+    .sliders__wrapper {
+        display: flex;
+    }
 
     .sliders__slider {
         box-sizing: border-box;
@@ -309,11 +313,11 @@ html {
         position: relative;
         display: flex;
         flex-direction: column;
-        flex: 0 1 25%;
+        flex: 0 1 20%;
         opacity: 0.33;
 
         &.slider--primary {
-            flex: 1 0 33%;
+            flex: 1 1 33%;
             opacity: 1;
         }
     }
@@ -734,6 +738,10 @@ html {
         width: 500px;
     }
     #plan {
+        border-radius: 5px;
+    }
+    #sliders { 
+        border-width: 1px;
         border-radius: 5px;
     }
 }
