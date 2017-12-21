@@ -298,9 +298,8 @@ html {
     border-width: 1px 0;
     background: rgba($black,0.2);
     padding: 15px 15px 25px;
-    box-sizing: border-box;
     justify-content: center;
-    max-width: 500px;
+    max-width: 550px;
     margin: 0 auto;
 
     .sliders__wrapper {
@@ -581,6 +580,13 @@ html {
             font-size: 12em;
         }
     }
+    .plan__non-credit-classes {
+        text-align: center;
+        font-size: 0.8em;
+        padding: 0.5em 0;
+        line-height: 1.2em;
+        color: darken($pale,20);
+    }
 }
 
 @keyframes rotation {
@@ -713,6 +719,9 @@ html {
 
 @media only screen and (min-width: 35em) {
     /* Style adjustments for viewports that meet the condition */
+    #sliders {
+        padding: 20px 25px 25px;
+    }
 }
 
 @media only screen and (min-width: 40em) {
@@ -743,6 +752,7 @@ html {
     #sliders { 
         border-width: 1px;
         border-radius: 5px;
+        padding: 30px 35px 35px;
     }
 }
 
