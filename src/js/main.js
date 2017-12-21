@@ -140,7 +140,7 @@ function renderChart() {
 	var summer_credits = parseInt($("#slider__value--Summer").val());
 	var winter_credits = parseInt($("#slider__value--Winter").val());
 
-	var first_semester = $('.sliders__slider:first-child h4').html();
+	var first_semester = $('.sliders__slider:first-child h4').data('semester');
 
 	var planned_graduation_month = planned_graduation.split(" ")[0];
 	var planned_graduation_year = planned_graduation.split(" ")[1];

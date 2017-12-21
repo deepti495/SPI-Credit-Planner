@@ -113,7 +113,7 @@ helpers['semester-sliders'] = (startSemester, splitSemester) => {
       html += ' slider--primary';
     }
     html += '">';
-    html += '<h4>' + semester
+    html += '<h4 data-semester='+ semester +'>' + semester
     if (splitSemester && ((semester == 'Spring') || (semester == 'Fall'))) {
       html += ' I & II';
     }
