@@ -201,7 +201,13 @@ helpers['plan-chart'] = (startSemester, startYear, lateGrad, splitSemester) => {
 
     for (var semester of semesters) {
       html += '<div class="plan__semester plan__semester--' + semester + '" id="' + semester + "-" + (parseInt(startYear) + currentYear) + '">';
-      html += '<h5>' + semester + '</h5>';
+      html += '<h5>' + semester;
+      if (splitSemester) {
+        if ((semester == 'Spring') || (semester == 'Fall')) {
+          html += ' I &amp; II';
+        }
+      }
+      html += '</h5>';
       html += '<div class="plan__semester__total"><span class="total__value">0</span> Credits</div>';
       html += '</div>';
     }

@@ -7,7 +7,7 @@ start_year: '2018'
 default_grad_month: January
 default_grad_year: '2020'
 early_grad: 1
-late_grad: 4
+late_grad: 2
 default_current_credits: 0
 credit_options:
   - id: '149506'

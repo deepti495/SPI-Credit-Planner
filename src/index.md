@@ -1,5 +1,4 @@
 ---
-title: 
+title: CUNY Credit Planner
+layout: index.html
 ---
-
-<h1></h1>

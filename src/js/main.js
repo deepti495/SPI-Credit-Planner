@@ -3,15 +3,18 @@ $(function() {
     $(".setup__skip").click(function() {
     	renderChart();
     	$('body').removeClass("configure").addClass("rendered");
+    	gtag('event', 'skip_setup');
     });
 
     $(".button--setup").click(function() {
     	if ($(".setup__question--inactive").length) {
 	    	$(".setup__question--active").addClass("setup__question--answered").removeClass("setup__question--active")
 	    	$(".setup__question--inactive").first().addClass("setup__question--active").removeClass("setup__question--inactive");
+	    	gtag('event', 'question_answered');
     	} else {
     		renderChart();
     		$('body').removeClass("configure").addClass("rendered");
+    		gtag('event', 'all_questions_answered');
     	}
     });
 
@@ -66,6 +69,8 @@ $(function() {
 
 	    	var selector = "#slider__boxes--" + semester;
 
+	    	gtag('event', semester + "_semester_adjusted", {'value': value});
+
 	    	if (($(this).data("semester") == 'Summer') || ($(this).data("semester") == 'Winter')) {
     			$("#select--summer-classes").val('summers-winters-yes');
     			$("#select--summer-classes").selectric('refresh');
@@ -90,6 +95,8 @@ $(function() {
 		}
 
     	var selector = "#slider__boxes--" + semester;
+
+    	gtag('event', semester + "_semester_adjusted", { 'value': value });
     	colorSlider(selector,value)
     	renderChart()
 
@@ -104,8 +111,10 @@ $(function() {
     	}
 
     	var selector = "#slider__boxes--" + semester;
+
     	colorSlider(selector,value)
     	renderChart()
+    	gtag('event', semester + "_semester_adjusted", {'value': value});
     })
 
     $(".slider__value input").keyup(function () { 
@@ -126,7 +135,24 @@ $(function() {
 
 	    colorSlider(selector,this.value)
     	renderChart()
+    	gtag('event', semester + "_semester_adjusted", {'value': value});
 	});
+
+  $(".button--save-plan").click(function() {
+		var fall_credits 	 = parseInt($("#slider__value--Fall").val());
+		var spring_credits = parseInt($("#slider__value--Spring").val());
+		var summer_credits = parseInt($("#slider__value--Summer").val());
+		var winter_credits = parseInt($("#slider__value--Winter").val());
+
+		var first_year_credits = spring_credits + fall_credits;
+
+		if ($("#select--summer-classes").val() == 'summers-winters-yes') {
+			first_year_credits += summer_credits;
+			if(winter_credits) { first_year_credits += winter_credits; }
+		}
+
+  	gtag('event', "save_plan", {'value': first_year_credits});
+  })
 
 });
 
@@ -148,17 +174,18 @@ function renderChart() {
 	// Figure out conditional states
 	if ($("#select--existing-credits").length != 0) {
 		var use_existing_credits = true;
-		var existing_credits = $("#select--existing-credits").val();
-
+		var existing_credits = parseInt($("#select--existing-credits").val());
 		fall_credits = existing_credits;
 	} else {
 		var use_existing_credits = false;
 	}
+
 	if ($("#select--summer-classes").val() == 'summers-winters-no') {
 		var summer_winter_classes = false;
 	} else {
 		var summer_winter_classes = true;
 	}
+
 	if ($(".sliders__slider").length == 3) {
 		var split_semester = true;
 	} else {
@@ -169,7 +196,7 @@ function renderChart() {
 	var first_year_credits = spring_credits + fall_credits;
 	if (summer_winter_classes) {
 		first_year_credits += summer_credits;
-		first_year_credits += winter_credits;
+		if (!split_semester) { first_year_credits += winter_credits; }
 	}
 
 	// Disable summer and winter semsester UI if unplanned
@@ -202,7 +229,7 @@ function renderChart() {
 	})
 
 	// Highlight 30 credit warning if under
-	if (first_year_credits < 30) {
+	if (first_year_credits < 30 && ($("body.configure").length == 0)) {
 		$(".rendered .note--recommended-credits").addClass("alerted");
 		if ( $("body.second-warning").length == 0 ) {
 			alert("Attention: You need to take 30 credits your first year to be on track to graduate by " + planned_graduation);
@@ -232,10 +259,15 @@ function renderChart() {
 
 	if (use_existing_credits) {
 		if (first_semester == 'Spring') {
+			
 			$(".plan__semester--Spring:not(:first) .total__value").html(fall_credits);
 		} else {
-			$(".plan__semester--Fall:not(:first) .total__value").html(spring_credits);
+			if (fall_credits < 15) {
+					$(".plan__semester--Fall:not(:first) .total__value").html(spring_credits);
+				}
 		}
+
+		if (!split_semester) { $("#Fall-2017 h5").html("Fall & Winter") }
 	}
 
 	// Extrapolate summer/winter classes only if that's part of the plan
@@ -262,6 +294,10 @@ function renderChart() {
 	$('.plan__semester--Spring').show();
 	$('.plan__semester--Summer').show();
 	$('.plan__semester--Winter').show();
+
+	if(use_existing_credits) {
+		$("#Winter-2017").hide();
+	}
 
 	$(".plan__year").each(function() {
 
