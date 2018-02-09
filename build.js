@@ -101,7 +101,7 @@ var site = metalsmith(__dirname)
   }
   site.build(function (err) {
     if (err) {
-      console.log(err);
+      throw err;
     }
     else {
       console.log('built!');

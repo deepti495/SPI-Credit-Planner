@@ -117,6 +117,9 @@ helpers['semester-sliders'] = (startSemester, splitSemester) => {
     if (splitSemester && ((semester == 'Spring') || (semester == 'Fall'))) {
       html += ' I & II';
     }
+    if (splitSemester && (semester == 'Summer')) {
+      html += ' Session';
+    }
     html += '</h4>';
 
     html += "<div class='slider__boxes'>"
@@ -205,6 +208,9 @@ helpers['plan-chart'] = (startSemester, startYear, lateGrad, splitSemester) => {
       if (splitSemester) {
         if ((semester == 'Spring') || (semester == 'Fall')) {
           html += ' I &amp; II';
+        }
+        if (semester == 'Summer') {
+          html += ' Session';
         }
       }
       html += '</h5>';

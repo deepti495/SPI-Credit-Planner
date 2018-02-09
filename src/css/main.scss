@@ -428,10 +428,19 @@ html {
     }
 
     h4 {
+        font-size: 0.9em;
         margin: 0 0 0.5em;
         text-align: left;
         font-weight: 400;
         color: $white;
+    }
+
+    .split_semesters {
+        padding-top: 15px;
+
+        #slider__boxes--Summer  h4 {
+            margin-top: -1.4em;
+        }
     }
 
     .slider__value {
@@ -524,7 +533,7 @@ html {
     .plan__semester {
         flex: 1 1 18%;
         font-size: .75em;
-        padding-bottom: 1em;
+        padding: 0 0.5em 1em 0;
     }
 
     h4 {
@@ -533,7 +542,7 @@ html {
     }
     h5 {
         font-weight: 400;
-        font-size: 1.4em;
+        font-size: 1.3em;
         margin: 1em 0 0;
     }
     .plan__total-credits {
@@ -547,19 +556,19 @@ html {
     .graduation_year .plan__planned-graduation {
         display: block;
         font-weight: bold;
-        flex: 2 0 33%;
+        flex: 1 1 33%;
         background: $white url('/images/cap-black.svg') no-repeat;
-        background-position: 83% 48%;
+        background-position: 90% 48%;
         max-width: 220px;
-        background-size: auto 60%;
+        background-size: auto 40%;
         border-radius: 2px;
         text-align: left;
-        padding: 15px 100px 15px 16px;
+        padding: 15px 50px 15px 16px;
         box-sizing: border-box;
         margin-top: 10px;
         margin-bottom: 1em;
         position: relative;
-        font-size: 0.9em;
+        font-size: 0.8em;
 
         &:after {
             background: url('/images/rays.svg') no-repeat center center;
@@ -792,6 +801,15 @@ html {
         border-width: 1px;
         border-radius: 5px;
         padding: 30px 35px 35px;
+    }
+
+    #plan .graduation_year .plan__planned-graduation {
+        background-position: 84% 48%;
+        max-width: 220px;
+        background-size: auto 60%;
+        border-radius: 2px;
+        text-align: left;
+        padding: 15px 100px 15px 16px;
     }
 }
 
