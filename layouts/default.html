@@ -41,7 +41,7 @@
                     <option value="summers-winters-yes" selected>plan</option>
 			        <option value="summers-winters-no">don't plan</option>
 			      </select>
-			      to take <br> Summer Semester {{#unless split_semesters }}or <br> Winter Session{{/unless}} classes<span class="question__period">.</span></p>
+			      to take <br> Summer {{#if split_semesters }}Session{{/if}}{{#unless split_semesters }}Semester or <br> Winter Session{{/unless}} classes<span class="question__period">.</span></p>
 					</div>
 				</div>
 
