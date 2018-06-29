@@ -14,7 +14,7 @@ helpers['graduation-options'] = (defaultYear, defaultMonth, earlyGrad, lateGrad)
 
   let defaultDate = parseInt(defaultYear);
 
-  if (defaultMonth == 'May' || 'June') {
+  if (defaultMonth == 'May') {
     defaultDate += 0.5;
   }
 
@@ -32,7 +32,7 @@ helpers['graduation-options'] = (defaultYear, defaultMonth, earlyGrad, lateGrad)
     if ((currentDate % 1) == 0) {
       html += 'January '
     } else {
-      html += defaultMonth + ' '
+      html += 'May '
     }
     html += Math.floor(currentDate) + '" ';
 //    html += "data-value='" + (2 + (currentDate - defaultDate)) + "' "
@@ -40,7 +40,7 @@ helpers['graduation-options'] = (defaultYear, defaultMonth, earlyGrad, lateGrad)
     if ((currentDate % 1) == 0) {
       html += 'January '
     } else {
-      html += defaultMonth + ' '
+      html += 'May '
     }
     html += Math.floor(currentDate);
     html += '"';
@@ -51,7 +51,7 @@ helpers['graduation-options'] = (defaultYear, defaultMonth, earlyGrad, lateGrad)
     if ((currentDate % 1) == 0) {
       html += 'January '
     } else {
-      html += defaultMonth + ' '
+      html += 'May '
     }
     html += Math.floor(currentDate) + " - " + (2 + (currentDate - defaultDate)) + " years";
     if (currentDate == defaultDate) {
