@@ -8,14 +8,19 @@ helpers['url-encode'] = (source) => {
   return tweetText;
 };
 
-helpers['graduation-options'] = (defaultYear, defaultMonth, earlyGrad, lateGrad) => {
+helpers['graduation-options'] = (defaultYear, defaultMonth, earlyGrad, lateGrad, splitSemesters) => {
 
   let html = '<select  id="select--planned-graduation">\n';
 
   let defaultDate = parseInt(defaultYear);
 
-  if (defaultMonth == 'May' || 'June') {
+  if (defaultMonth == 'May') {
     defaultDate += 0.5;
+  }
+
+  let springMonth = 'May'
+  if (splitSemesters) {
+    springMonth = 'June'
   }
 
   let earlyDate = defaultDate - (parseInt(earlyGrad) * 0.5);
@@ -32,7 +37,7 @@ helpers['graduation-options'] = (defaultYear, defaultMonth, earlyGrad, lateGrad)
     if ((currentDate % 1) == 0) {
       html += 'January '
     } else {
-      html += defaultMonth + ' '
+      html += springMonth + " "
     }
     html += Math.floor(currentDate) + '" ';
 //    html += "data-value='" + (2 + (currentDate - defaultDate)) + "' "
@@ -40,7 +45,7 @@ helpers['graduation-options'] = (defaultYear, defaultMonth, earlyGrad, lateGrad)
     if ((currentDate % 1) == 0) {
       html += 'January '
     } else {
-      html += defaultMonth + ' '
+      html += springMonth + " "
     }
     html += Math.floor(currentDate);
     html += '"';
@@ -51,7 +56,7 @@ helpers['graduation-options'] = (defaultYear, defaultMonth, earlyGrad, lateGrad)
     if ((currentDate % 1) == 0) {
       html += 'January '
     } else {
-      html += defaultMonth + ' '
+      html += springMonth + " "
     }
     html += Math.floor(currentDate) + " - " + (2 + (currentDate - defaultDate)) + " years";
     if (currentDate == defaultDate) {
