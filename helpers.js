@@ -120,7 +120,7 @@ helpers['semester-sliders'] = (startSemester, splitSemester) => {
     html += '">';
     html += '<h4 data-semester='+ semester +'>' + semester
     if (splitSemester && ((semester == 'Spring') || (semester == 'Fall'))) {
-      html += ' I & II';
+      html += ' I &amp; II / A &amp; B';
     }
     if (splitSemester && (semester == 'Summer')) {
       html += ' Session';
@@ -212,7 +212,7 @@ helpers['plan-chart'] = (startSemester, startYear, lateGrad, splitSemester) => {
       html += '<h5>' + semester;
       if (splitSemester) {
         if ((semester == 'Spring') || (semester == 'Fall')) {
-          html += ' I &amp; II';
+          html += ' I &amp; II  / A &amp; B';
         }
         if (semester == 'Summer') {
           html += ' Session';
