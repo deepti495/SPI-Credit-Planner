@@ -14,6 +14,7 @@ module.exports = (dato, root, i18n) => {
         	early_grad: planner.earlyGraduation,
         	late_grad: planner.lateGraduation,
         	default_current_credits: planner.defaultCurrentCredits,
+            hide_winter_slider: planner.hideWinterSlider,
         	credit_options: planner.requiredCredits.toMap(),
         	split_semesters: planner.splitSemesters,
           layout: 'default.html'

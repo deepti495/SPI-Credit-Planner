@@ -52,7 +52,8 @@
 
     	</section>
 
-    	<section id="sliders">
+                                     {{!-- Add the classes that lock the first semester.  Hide the winter slider if the semester is already complete --}}
+    	<section id="sliders" class="{{#if default_current_credits}}use-existing-credits {{#if hide_winter_slider }}hide-winter-slider{{/if}}{{/if}}">
             <header id="intro">
                 <h3>{{ title }}</h3>
                 <ul>

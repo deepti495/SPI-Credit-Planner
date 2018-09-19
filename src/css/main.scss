@@ -356,7 +356,7 @@ html {
 
     &.use-existing-credits {
 
-        #slider__boxes--Winter {
+        &.hide-winter-slider #slider__boxes--Winter {
             display: none;
         }
 
