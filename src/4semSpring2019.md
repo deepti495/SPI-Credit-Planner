@@ -9,62 +9,63 @@ default_grad_year: '2020'
 early_grad: 1
 late_grad: 2
 default_current_credits: 15
+hide_winter_slider: null
 credit_options:
   - id: '350314'
     itemType: credit_option
     updatedAt: '2018-07-24T16:44:37.403Z'
     createdAt: '2018-07-24T16:44:37.403Z'
     default: true
-    label: null
+    label: ''
     creditValue: 60
   - id: '350315'
     itemType: credit_option
     updatedAt: '2018-07-24T16:44:37.640Z'
     createdAt: '2018-07-24T16:44:37.640Z'
     default: false
-    label: null
+    label: ''
     creditValue: 61
   - id: '350316'
     itemType: credit_option
     updatedAt: '2018-07-24T16:44:37.866Z'
     createdAt: '2018-07-24T16:44:37.866Z'
     default: false
-    label: null
+    label: ''
     creditValue: 62
   - id: '350317'
     itemType: credit_option
     updatedAt: '2018-07-24T16:44:38.101Z'
     createdAt: '2018-07-24T16:44:38.101Z'
     default: false
-    label: null
+    label: ''
     creditValue: 63
   - id: '350318'
     itemType: credit_option
     updatedAt: '2018-07-24T16:44:38.337Z'
     createdAt: '2018-07-24T16:44:38.337Z'
     default: false
-    label: null
+    label: ''
     creditValue: 64
   - id: '350319'
     itemType: credit_option
     updatedAt: '2018-07-24T16:44:38.580Z'
     createdAt: '2018-07-24T16:44:38.580Z'
     default: false
-    label: null
+    label: ''
     creditValue: 65
   - id: '350320'
     itemType: credit_option
     updatedAt: '2018-07-24T16:44:38.831Z'
     createdAt: '2018-07-24T16:44:38.831Z'
     default: false
-    label: null
+    label: ''
     creditValue: 66
   - id: '350321'
     itemType: credit_option
     updatedAt: '2018-07-24T16:44:39.080Z'
     createdAt: '2018-07-24T16:44:39.080Z'
     default: false
-    label: null
+    label: ''
     creditValue: 67
   - id: '350322'
     itemType: credit_option

@@ -175,9 +175,11 @@ function renderChart() {
 	if ($("#select--existing-credits").length != 0) {
 		var use_existing_credits = true;
 		var existing_credits = parseInt($("#select--existing-credits").val());
+		var hide_winter_semester = $("#sliders").hasClass("hide-winter-slider");
 		fall_credits = existing_credits;
 	} else {
 		var use_existing_credits = false;
+		var hide_winter_semester = false;
 	}
 
 	if ($("#select--summer-classes").val() == 'summers-winters-no') {
@@ -210,7 +212,6 @@ function renderChart() {
 
 	// Set existing number of credits for the 1st semester (if we're using those)
 	if (use_existing_credits) {
-		$("#sliders").addClass('use-existing-credits');
 		$(".sliders__slider:first-child .slider__value input").val(existing_credits);
 		$(".sliders__slider:first-child button").addClass('disabled');
 		colorSlider(".sliders__slider:first-child",existing_credits);
@@ -295,8 +296,8 @@ function renderChart() {
 	$('.plan__semester--Summer').show();
 	$('.plan__semester--Winter').show();
 
-	if(use_existing_credits) {
-		$("#Winter-2017").hide();
+	if(hide_winter_semester) {
+		$(".plan__semester--Winter").first().hide();
 	}
 
 	$(".plan__year").each(function() {

@@ -9,62 +9,63 @@ default_grad_year: '2020'
 early_grad: 1
 late_grad: 4
 default_current_credits: 15
+hide_winter_slider: true
 credit_options:
   - id: '350304'
     itemType: credit_option
-    updatedAt: '2018-07-24T16:40:28.879Z'
-    createdAt: '2018-07-24T16:40:28.879Z'
+    updatedAt: '2018-09-19T23:34:08.270Z'
+    createdAt: '2018-09-19T23:34:08.270Z'
     default: true
-    label: null
+    label: ''
     creditValue: 60
   - id: '350305'
     itemType: credit_option
-    updatedAt: '2018-07-24T16:40:29.184Z'
-    createdAt: '2018-07-24T16:40:29.184Z'
+    updatedAt: '2018-09-19T23:34:08.295Z'
+    createdAt: '2018-09-19T23:34:08.295Z'
     default: false
-    label: null
+    label: ''
     creditValue: 61
   - id: '350306'
     itemType: credit_option
-    updatedAt: '2018-07-24T16:40:29.587Z'
-    createdAt: '2018-07-24T16:40:29.587Z'
+    updatedAt: '2018-09-19T23:34:08.316Z'
+    createdAt: '2018-09-19T23:34:08.316Z'
     default: false
-    label: null
+    label: ''
     creditValue: 62
   - id: '350307'
     itemType: credit_option
-    updatedAt: '2018-07-24T16:40:29.960Z'
-    createdAt: '2018-07-24T16:40:29.960Z'
+    updatedAt: '2018-09-19T23:34:08.336Z'
+    createdAt: '2018-09-19T23:34:08.336Z'
     default: false
-    label: null
+    label: ''
     creditValue: 63
   - id: '350308'
     itemType: credit_option
-    updatedAt: '2018-07-24T16:40:30.276Z'
-    createdAt: '2018-07-24T16:40:30.276Z'
+    updatedAt: '2018-09-19T23:34:08.356Z'
+    createdAt: '2018-09-19T23:34:08.356Z'
     default: false
-    label: null
+    label: ''
     creditValue: 64
   - id: '350309'
     itemType: credit_option
-    updatedAt: '2018-07-24T16:40:30.627Z'
-    createdAt: '2018-07-24T16:40:30.627Z'
+    updatedAt: '2018-09-19T23:34:08.379Z'
+    createdAt: '2018-09-19T23:34:08.379Z'
     default: false
-    label: null
+    label: ''
     creditValue: 65
   - id: '350310'
     itemType: credit_option
-    updatedAt: '2018-07-24T16:40:30.932Z'
-    createdAt: '2018-07-24T16:40:30.932Z'
+    updatedAt: '2018-09-19T23:34:08.399Z'
+    createdAt: '2018-09-19T23:34:08.399Z'
     default: false
-    label: null
+    label: ''
     creditValue: 66
   - id: '350311'
     itemType: credit_option
-    updatedAt: '2018-07-24T16:40:31.280Z'
-    createdAt: '2018-07-24T16:40:31.280Z'
+    updatedAt: '2018-09-19T23:34:08.420Z'
+    createdAt: '2018-09-19T23:34:08.420Z'
     default: false
-    label: null
+    label: ''
     creditValue: 67
   - id: '350312'
     itemType: credit_option
