@@ -312,7 +312,7 @@ html {
         position: relative;
         display: flex;
         flex-direction: column;
-        flex: 0 1 20%;
+        flex: 0 1 33%;
         opacity: 0.33;
 
         &.slider--primary {
@@ -437,10 +437,6 @@ html {
 
     .split_semesters {
         padding-top: 15px;
-
-        #slider__boxes--Summer  h4 {
-            margin-top: -1.4em;
-        }
     }
 
     .slider__value {
