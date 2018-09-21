@@ -360,7 +360,7 @@ html {
             display: none;
         }
 
-        #slider__boxes--Fall h4::after {
+        &.hide-winter-slider #slider__boxes--Fall h4::after {
             content: " & Winter"
         }
 

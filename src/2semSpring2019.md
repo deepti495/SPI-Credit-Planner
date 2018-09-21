@@ -9,7 +9,7 @@ default_grad_year: '2020'
 early_grad: 1
 late_grad: 4
 default_current_credits: 15
-hide_winter_slider: true
+hide_winter_slider: false
 credit_options:
   - id: '350304'
     itemType: credit_option
